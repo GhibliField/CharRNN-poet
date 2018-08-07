@@ -99,7 +99,7 @@ def gen_acrostic(model,start_words,ix2word,word2ix, prefix_words = None):
     for i in range(opt.max_gen_len):
         output,hidden = model(input,hidden)
         top_index  = output.data[0].topk(1)[1][0]
-        w = ix2word[top_index]
+        w = ix2word[top_index.item()]
 
         if (pre_word  in {u'。',u'！','<START>'} ):
             # 如果遇到句号，藏头的词送进去生成
